@@ -3,98 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - SPECTER-7</title>
+    <title>👻 GHOST SPY - تسجيل الدخول</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            background: #0a0a1a;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            justify-content: center;
+            padding: 20px;
             color: #fff;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background:
+                radial-gradient(circle at center, rgba(0,255,102,.07), transparent 35%),
+                #020403;
+            overflow: hidden;
         }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0,255,102,.025) 0,
+                rgba(0,255,102,.025) 1px,
+                transparent 1px,
+                transparent 5px
+            );
+        }
+
         .login-box {
-            background: #1a1a2e;
-            padding: 40px;
-            border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 0 30px rgba(15, 52, 96, 0.5);
+            width: min(420px, 100%);
+            padding: 36px;
+            border: 1px solid rgba(0,255,102,.55);
+            border-radius: 16px;
+            background: rgba(3,8,5,.95);
+            box-shadow:
+                0 0 25px rgba(0,255,102,.18),
+                0 0 80px rgba(0,255,102,.07),
+                inset 0 0 30px rgba(0,255,102,.035);
+            position: relative;
         }
+
+        .login-box::before {
+            content: "";
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: -1px;
+            height: 2px;
+            background: #00ff66;
+            box-shadow: 0 0 14px #00ff66;
+        }
+
+        .ghost {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 12px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #00ff66;
+            border-radius: 18px;
+            font-size: 40px;
+            box-shadow: 0 0 22px rgba(0,255,102,.4);
+            animation: pulse 2s infinite;
+        }
+
         h1 {
             text-align: center;
-            margin-bottom: 30px;
-            color: #0f3460;
-            font-size: 24px;
+            color: #00ff66;
+            font-size: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px #00ff66, 0 0 22px rgba(0,255,102,.45);
+            margin-bottom: 5px;
+            direction: ltr;
         }
-        .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 5px; color: #888; }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8d84;
+            font-size: 12px;
+            margin-bottom: 28px;
+        }
+
+        .error {
+            display: none;
+            color: #ff667d;
+            border: 1px solid rgba(255,48,79,.5);
+            background: rgba(255,48,79,.08);
+            padding: 10px;
+            border-radius: 7px;
+            margin-bottom: 18px;
+            text-align: center;
+            box-shadow: 0 0 14px rgba(255,48,79,.1);
+        }
+
+        .input-group { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #00ff66;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
         input {
             width: 100%;
-            padding: 12px;
-            background: #0f3460;
-            border: 1px solid #1a4a7a;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 14px;
+            padding: 13px 14px;
+            background: #020503;
+            border: 1px solid rgba(0,255,102,.38);
+            border-radius: 8px;
+            color: #ff667d;
+            font: inherit;
+            outline: none;
+            transition: .2s;
         }
-        input:focus { outline: none; border-color: #2980b9; }
+
+        input:focus {
+            border-color: #00ff66;
+            box-shadow: 0 0 15px rgba(0,255,102,.25);
+        }
+
         button {
             width: 100%;
-            padding: 12px;
-            background: #0f3460;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+            padding: 13px;
+            border: 1px solid #00ff66;
+            border-radius: 8px;
+            background: linear-gradient(90deg, rgba(0,255,102,.14), rgba(0,255,102,.04));
+            color: #00ff66;
+            font: inherit;
+            font-weight: 800;
             cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
+            transition: .2s;
+            text-shadow: 0 0 7px #00ff66;
+            box-shadow: 0 0 12px rgba(0,255,102,.15);
         }
-        button:hover { background: #1a4a7a; }
-        .error {
-            background: #ff000033;
-            color: #ff6b6b;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
+
+        button:hover {
+            background: rgba(0,255,102,.18);
+            box-shadow: 0 0 24px rgba(0,255,102,.4);
+            transform: translateY(-1px);
+        }
+
+        .footer {
             text-align: center;
-            display: none;
+            margin-top: 22px;
+            color: #4e5a52;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes pulse {
+            0%,100% { box-shadow: 0 0 14px rgba(0,255,102,.25); }
+            50% { box-shadow: 0 0 32px rgba(0,255,102,.65); }
         }
     </style>
 </head>
 <body>
     <div class="login-box">
-        <h1>SPECTER-7</h1>
-        
+        <div class="ghost">👻</div>
+        <h1>GHOST SPY</h1>
+        <div class="subtitle">لوحة التحكم بالأجهزة</div>
+
         <div class="error" id="errorMsg">بيانات الدخول خاطئة</div>
-        
+
         <form id="loginForm">
             <div class="input-group">
                 <label>اسم المستخدم</label>
                 <input type="text" id="username" required autofocus>
             </div>
+
             <div class="input-group">
                 <label>كلمة المرور</label>
                 <input type="password" id="password" required>
             </div>
-            <button type="submit">دخول</button>
+
+            <button type="submit">الدخول إلى النظام</button>
         </form>
+
+        <div class="footer">GHOST SPY // By: Hitler</div>
     </div>
-    
+
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
-            // بيانات الدخول
+
             const adminUser = 'admin';
             const adminPass = 'hitler21994';
-            
+
             if (username === adminUser && password === adminPass) {
-                // حفظ الجلسة
                 sessionStorage.setItem('logged_in', 'true');
                 window.location.href = 'panel.html';
             } else {
@@ -104,8 +210,7 @@
                 }, 3000);
             }
         });
-        
-        // إذا كان مسجل دخول بالفعل
+
         if (sessionStorage.getItem('logged_in') === 'true') {
             window.location.href = 'panel.html';
         }
