@@ -343,4 +343,4 @@ function updateDevicesList(deviceId, deviceInfo) {
     fs.writeFileSync(devicesFile, JSON.stringify(devices, null, 2));
 }
 
-app.listen(PORT, () => console.log(`SPECTER-7 running on ${PORT}`));
+app.listen(PORT, () => console.log(`GHOST SPY running on ${PORT}`));
